@@ -1,1 +1,5 @@
+03/03/10:40:00	Beta Release version 0.91
+				- Fixed some bad code example in the docs (it referenced
+				  a prelease version of the software). Thanks to tfo for
+				  providing the patch.
 12/01/01:14:20	Beta Release version 0.90

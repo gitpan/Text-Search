@@ -8,7 +8,7 @@ require AutoLoader;
 
 @ISA = qw(Exporter AutoLoader);
 
-$VERSION = '0.90';
+$VERSION = '0.91';
 
 sub new {
     my($class) = shift;
@@ -188,7 +188,7 @@ __END__
 
 B<Text::Search> - Perl module to allow quick searching of directories for given text.
 
-Version 0.90
+Version 0.91
 
 =head1 SYNOPSIS
 
@@ -206,7 +206,7 @@ foreach (@results) { print "Found $term in $_->{'FILENAME'} $_->{'OCCURENCES'} t
 RegEx Search:
 my @terms = ('(foo.*)','(bar)');
 
-my $search = Text::Search->new(RegExSearch = '1');
+my $search = Text::Search->new('RegExSearch', '1');
 my @results = $search->Find(@terms);
 
 foreach (@results) { print "Found $_->{'FILENAME'} with $_->{'OCCURENCES'}.\n" };
@@ -226,7 +226,7 @@ Information is returned as an array of hashes sorted descending by number of occ
 
 =item C<Text::Search-E<gt>new()>
 
-C<$search = Text::Search-E<gt>new([RegExSearch =E<gt> '1'], [DocumentRoot =E<gt> '/usr/home/mike'], [FileFilter =E<gt> '(^.*\.htm*$)'] );>
+C<$search = Text::Search-E<gt>new('RegExSearch', '1', 'DocumentRoot', '/usr/home/mike', 'FileFilter, '(^.*\.htm*$)' );>
 
 Prepares a search to be performed. The search will execute with a $search-E<gt>Find().
 
@@ -298,7 +298,7 @@ META_KEYWORDS = Pulled from the <meta name="keywords"> tag.
 
 use Text::Search;
 
-my $search = Text::Search-E<gt>new(DocumentRoot => '/usr/home/bill/ebooks');
+my $search = Text::Search-E<gt>new('DocumentRoot', '/usr/home/bill/ebooks');
 
 print "Searching:\n\n";
 
@@ -315,7 +315,7 @@ use Text::Search;
 
 &ReadParse (*input);
 
-my $search = Text::Search-E<gt>new(DocumentRoot => $ENV{'DOCUMENT_ROOT'}, FileFilter => '(^.*\.html$)');
+my $search = Text::Search-E<gt>new('DocumentRoot', $ENV{'DOCUMENT_ROOT'}, 'FileFilter', '(^.*\.html$)');
 
 my @results = $search-E<gt>Find($input{'User_Search'});
 
